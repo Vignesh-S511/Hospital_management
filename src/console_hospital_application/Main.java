@@ -6,6 +6,8 @@ import console_hospital_application.database.AdminDatabase;
 import console_hospital_application.model.Doctor;
 import console_hospital_application.model.Patient;
 import console_hospital_application.services.AdminDetails;
+import console_hospital_application.services.DoctorDetails;
+import console_hospital_application.services.PatientDetails;
 
 public class Main {
 	public static void main(String[] args) throws Exception
@@ -27,11 +29,11 @@ public class Main {
 			}
 			else if(userType.equals("doctor"))
 			{
-				Doctor.doctorRegister();
+				System.out.println(DoctorDetails.doctorRegister());
 			}
 			else
 			{
-				Patient.patientRegister();
+				System.out.println(PatientDetails.patientRegister());
 			}
 			break;
 		
