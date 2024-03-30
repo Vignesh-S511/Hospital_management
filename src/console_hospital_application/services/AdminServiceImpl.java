@@ -5,8 +5,9 @@ import java.util.Scanner;
 import console_hospital_application.database.AdminDatabase;
 import console_hospital_application.model.Admin;
 
-public class AdminDetails {
-	public static String adminRegister() throws Exception
+public class AdminServiceImpl implements AdminService{
+	@Override
+	public String adminRegister() 
 	{
 		Scanner scanner = new Scanner(System.in);
 		System.out.println("Admin Registration");

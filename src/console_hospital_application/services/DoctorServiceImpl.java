@@ -5,8 +5,9 @@ import java.util.Scanner;
 import console_hospital_application.database.AdminDatabase;
 import console_hospital_application.model.Doctor;
 
-public class DoctorDetails {
-	public static String doctorRegister()
+public class DoctorServiceImpl implements DoctorService {
+	@Override
+	public String doctorRegister()
 	{
 		Scanner scanner = new Scanner(System.in);
 		System.out.println("Doctor Registration");
