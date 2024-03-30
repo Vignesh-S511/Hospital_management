@@ -5,12 +5,13 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
+import console_hospital_application.model.Admin;
 import console_hospital_application.model.User;
 
 public class AdminDatabase {
 	public static void register(String registerUserName,String registerEmail,String registerPassword)throws Exception
 	{
-		User user = new User(registerPassword, registerPassword, registerPassword);
+		User user = new Admin(registerPassword, registerPassword, registerPassword);
 		try {
 			String url = "jdbc:mysql://localhost:3306/hospital_management";
 			String mysqlUser = "root";
