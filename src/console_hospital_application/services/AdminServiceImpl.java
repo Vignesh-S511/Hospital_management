@@ -17,10 +17,14 @@ public class AdminServiceImpl implements AdminService
 		    System.out.print("Enter registration password : ");
 			String adminRegisterPassword = scanner.nextLine();
 			//scanner.close();
-			new Admin(adminRegisterUserName,adminRegisterEmail,adminRegisterPassword);// Admin admin = new Admin() anonymous object
+			Admin admin = new Admin(adminRegisterUserName,adminRegisterEmail,adminRegisterPassword);// Admin admin = new Admin() anonymous object
+			System.out.println(admin.getUserName() );
+			System.out.println(admin.getEmail());
+			System.out.println(admin.getPassword());
+
 			try 
 			{
-				AdminDatabase.register(adminRegisterUserName,adminRegisterEmail,adminRegisterPassword);
+				AdminDatabase.register(admin);
 			} 
 			catch (Exception e) 
 			{

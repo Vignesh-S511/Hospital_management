@@ -9,21 +9,21 @@ import console_hospital_application.model.Admin;
 import console_hospital_application.model.User;
 
 public class AdminDatabase {
-	public static void register(String registerUserName,String registerEmail,String registerPassword)throws Exception
+	public static void register(User admin)throws Exception
 	{
-		User user = new Admin(registerPassword, registerPassword, registerPassword);
+		//User user = new Admin(admin);
 		try {
 			String url = "jdbc:mysql://localhost:3306/hospital_management";
 			String mysqlUser = "root";
 			String password = "Vignesh@2001";
-			String sql = "INSERT INTO admin_details VALUES(?,?,?);";
+			String sql = "INSERT INTO admin_details (userName,email,password) VALUES(?,?,?);";
 	    	
 	    	Connection connection = DriverManager.getConnection(url,mysqlUser,password);
 	    	//Statement statement = connection.createStatement();
 	    	PreparedStatement prepareStatement = connection.prepareStatement(sql);
-	    	prepareStatement.setString(1,user.getUserName());
-	    	prepareStatement.setString(2,user.getEmail());
-	    	prepareStatement.setString(3,user.getPassword());
+	    	prepareStatement.setString(1,admin.getUserName());
+	    	prepareStatement.setString(2,admin.getEmail());
+	    	prepareStatement.setString(3,admin.getPassword());
 	    	prepareStatement.executeUpdate();
 	    	
 	    	//System.out.println(PreparedStatement);
