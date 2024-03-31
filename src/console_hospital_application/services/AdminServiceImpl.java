@@ -1,7 +1,7 @@
 package console_hospital_application.services;
 import java.util.Scanner;
 																																																																
-import console_hospital_application.database.AdminDatabase;
+import console_hospital_application.database.AdminDatabaseImpl;
 import console_hospital_application.model.Admin;
 public class AdminServiceImpl implements AdminService
 {
@@ -17,7 +17,7 @@ public class AdminServiceImpl implements AdminService
 		    System.out.print("Enter registration password : ");
 			String adminRegisterPassword = scanner.nextLine();
 			//scanner.close();
-			AdminDatabase adminDatabase = new AdminDatabase();
+			AdminDatabaseImpl adminDatabase = new AdminDatabaseImpl();
 			Admin admin = new Admin(adminRegisterUserName,adminRegisterEmail,adminRegisterPassword);// Admin admin = new Admin() anonymous object
 			System.out.println(admin.getUserName() );
 			System.out.println(admin.getEmail());

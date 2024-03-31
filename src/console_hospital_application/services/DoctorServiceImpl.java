@@ -2,8 +2,8 @@ package console_hospital_application.services;
 
 import java.util.Scanner;
 
-import console_hospital_application.database.AdminDatabase;
-import console_hospital_application.database.DoctorDatabase;
+import console_hospital_application.database.AdminDatabaseImpl;
+import console_hospital_application.database.DoctorDatabaseImpl;
 import console_hospital_application.model.Doctor;
 
 public class DoctorServiceImpl implements DoctorService {
@@ -18,7 +18,7 @@ public class DoctorServiceImpl implements DoctorService {
 		String doctorRegisterEmail = scanner.nextLine();
 		System.out.print("Enter registration password : ");
 		String doctorRegisterPassword = scanner.nextLine();
-		DoctorDatabase doctorDatabase = new DoctorDatabase();
+		DoctorDatabaseImpl doctorDatabase = new DoctorDatabaseImpl();
 		Doctor doctor = new Doctor(doctorRegisterUserName,doctorRegisterEmail,doctorRegisterPassword);
 		try 
 		{

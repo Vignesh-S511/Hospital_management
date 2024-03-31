@@ -5,7 +5,7 @@ import console_hospital_application.services.AdminService;
 import console_hospital_application.services.DoctorService;
 import console_hospital_application.services.PatientService;
 
-import console_hospital_application.database.AdminDatabase;
+import console_hospital_application.database.AdminDatabaseImpl;
 import console_hospital_application.model.Doctor;
 import console_hospital_application.model.Patient;
 import console_hospital_application.services.AdminServiceImpl;
@@ -52,7 +52,7 @@ public class Main {
 				String loginPassword = scanner.nextLine();
 				System.out.println("Enter the user details");
 				String userLoginDetails = scanner.nextLine();
-				AdminDatabase.login(loginUserName,loginPassword);
+				AdminDatabaseImpl.login(loginUserName,loginPassword);
 				break;
 			
 			
