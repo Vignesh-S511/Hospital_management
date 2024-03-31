@@ -6,11 +6,12 @@ import console_hospital_application.database.AdminDatabaseImpl;
 import console_hospital_application.database.DoctorDatabaseImpl;
 import console_hospital_application.model.Doctor;
 
-public class DoctorServiceImpl implements DoctorService {
+public abstract class DoctorServiceImpl implements DoctorService {
+	Scanner scanner = new Scanner(System.in);
 	@Override
 	public String doctorRegister()
 	{
-		Scanner scanner = new Scanner(System.in);
+		
 		System.out.println("Doctor Registration");
 		System.out.println("Enter doctor userName : ");
 		String doctorRegisterUserName = scanner.nextLine();
@@ -22,7 +23,7 @@ public class DoctorServiceImpl implements DoctorService {
 		Doctor doctor = new Doctor(doctorRegisterUserName,doctorRegisterEmail,doctorRegisterPassword);
 		try 
 		{
-			doctorDatabase.register(doctor);
+			doctorDatabase.doctorRegister(doctor);
 		} 
 		catch (Exception e) 
 		{
@@ -31,6 +32,17 @@ public class DoctorServiceImpl implements DoctorService {
 		}
 		return "registered successfully";
 		
+	}
+	public String doctorLogin()
+	{
+		String loginUserName = scanner.nextLine();
+	    System.out.println("Enter doctor loginUserName");
+	    String doctorLoginUserName = scanner.nextLine();
+	    System.out.println("Enter admin loginPassWord");
+	    String doctorLoginPassword = scanner.nextLine();
+	    DoctorDatabaseImpl doctorDatabase = new DoctorDatabaseImpl();
+	    doctorDatabase.doctorLogin(doctorLoginUserName,doctorLoginPassword);
+	    return "login successfully";
 	}
 
 }

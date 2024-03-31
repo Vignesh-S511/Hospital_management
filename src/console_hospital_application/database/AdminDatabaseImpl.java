@@ -10,7 +10,8 @@ import console_hospital_application.model.User;
 
 public class AdminDatabaseImpl implements AdminDatabase 
 {
-	public void register(User admin)throws Exception
+	@Override
+	public void adminRegister(User admin)
 	{
 		try {
 			String url = "jdbc:mysql://localhost:3306/hospital_management";
@@ -36,7 +37,8 @@ public class AdminDatabaseImpl implements AdminDatabase
 			System.out.println(e.toString());
 		}
 	}
-	public static void login(String loginUserName,String loginPassword)throws Exception
+	@Override
+	public void adminLogin(String loginUserName,String loginPassword)
 	{
 		String sql;
 		try {

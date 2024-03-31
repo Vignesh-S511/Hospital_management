@@ -45,14 +45,22 @@ public class Main {
 				break;
 			
 			case 2:
-				System.out.println("ADMIN LOGIN");
-				System.out.println("Enter admin userName");
-				String loginUserName = scanner.nextLine();
-				System.out.println("Enter admin password");
-				String loginPassword = scanner.nextLine();
-				System.out.println("Enter the user details");
-				String userLoginDetails = scanner.nextLine();
-				AdminDatabaseImpl.login(loginUserName,loginPassword);
+				System.out.println("LOGIN");
+				System.out.println("Enter the userType : ");
+				String loginUserType = scanner.nextLine();
+				
+				if(loginUserType.equals("admin"))
+				{
+					System.out.println(adminService.adminLogin());
+				}
+				else if(loginUserType.equals("doctor"))
+				{
+					System.out.println(doctorService.doctorLogin());
+				}
+				else 
+				{
+					System.out.println(patientService.patientLogin());
+				}
 				break;
 			
 			
