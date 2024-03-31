@@ -5,7 +5,7 @@ import console_hospital_application.database.AdminDatabaseImpl;
 import console_hospital_application.database.DoctorDatabaseImpl;
 import console_hospital_application.model.Admin;
 import console_hospital_application.model.Doctor;
-public abstract class AdminServiceImpl implements AdminService
+public class AdminServiceImpl implements AdminService
 {
 	Scanner scanner = new Scanner(System.in);
 	@Override

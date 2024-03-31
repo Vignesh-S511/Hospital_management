@@ -6,7 +6,7 @@ import console_hospital_application.database.AdminDatabaseImpl;
 import console_hospital_application.database.DoctorDatabaseImpl;
 import console_hospital_application.model.Doctor;
 
-public abstract class DoctorServiceImpl implements DoctorService {
+public class DoctorServiceImpl implements DoctorService {
 	Scanner scanner = new Scanner(System.in);
 	@Override
 	public String doctorRegister()
@@ -35,14 +35,12 @@ public abstract class DoctorServiceImpl implements DoctorService {
 	}
 	public String doctorLogin()
 	{
-		String loginUserName = scanner.nextLine();
 	    System.out.println("Enter doctor loginUserName");
 	    String doctorLoginUserName = scanner.nextLine();
 	    System.out.println("Enter admin loginPassWord");
 	    String doctorLoginPassword = scanner.nextLine();
 	    DoctorDatabaseImpl doctorDatabase = new DoctorDatabaseImpl();
-	    doctorDatabase.doctorLogin(doctorLoginUserName,doctorLoginPassword);
-	    return "login successfully";
+	    return doctorDatabase.doctorLogin(doctorLoginUserName,doctorLoginPassword);
 	}
 
 }

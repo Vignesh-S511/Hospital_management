@@ -7,9 +7,9 @@ import java.sql.ResultSet;
 
 import console_hospital_application.model.User;
 
-public class DoctorDatabaseImpl {
+public class DoctorDatabaseImpl implements DoctorDatabase {
 	
-	public void doctorRegister(User Doctor)
+	public String doctorRegister(User Doctor)
 	{
 		//User user = new User(registerPassword, registerPassword, registerPassword);
 		try {
@@ -25,18 +25,18 @@ public class DoctorDatabaseImpl {
 	    	prepareStatement.setString(2,Doctor.getEmail());
 	    	prepareStatement.setString(3,Doctor.getPassword());
 	    	prepareStatement.executeUpdate();
-	    	
-	    	//System.out.println(PreparedStatement);
-	    	
 	    	connection.close();
-	    	
 		}
 		catch(Exception e)
 		{
 			System.out.println(e.toString());
+			return "Registered unsuccessfully";
 		}
+		
+		return "Registered successfully";
+
 	}
-	public void doctorLogin(String loginUserName,String loginPassword)
+	public String doctorLogin(String loginUserName,String loginPassword)
 	{
 		String sql;
 		try {
@@ -50,22 +50,20 @@ public class DoctorDatabaseImpl {
 	    	prepareStatement.setString(1,loginUserName);
 	    	prepareStatement.setString(2,loginPassword);
 	    	ResultSet rows = prepareStatement.executeQuery();
+	    	
 	    	if(rows.next())
 	    	{
-	    		System.out.println("Login successfully");
+	    		connection.close();
+	    		return "Login successfully";
 	    	}
-	    	else
-	    	{
-	    		System.out.println("Invalid username or password");
-	    	}
-	    		    	
-	    	connection.close();
-	    	
+	    		connection.close();	
+	    		    		
 		}
 		catch(Exception e)
 		{
 			System.out.println(e.toString());
 		}
+		return "Invalid username or password";
 		
 	}
 	

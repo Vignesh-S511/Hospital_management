@@ -7,8 +7,8 @@ import java.sql.ResultSet;
 
 import console_hospital_application.model.User;
 
-public class PatientDatabaseImpl {
-	public void patientRegister(User Patient)throws Exception
+public class PatientDatabaseImpl implements PatientDatabase{
+	public void patientRegister(User Patient)
 	{
 		//User user = new User(registerPassword, registerPassword, registerPassword);
 		try {
@@ -35,7 +35,7 @@ public class PatientDatabaseImpl {
 			System.out.println(e.toString());
 		}
 	}
-	public void patientLogin(String loginUserName,String loginPassword)throws Exception
+	public void patientLogin(String loginUserName,String loginPassword)
 	{
 		String sql;
 		try {
