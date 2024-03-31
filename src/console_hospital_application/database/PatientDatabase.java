@@ -8,9 +8,9 @@ import java.sql.ResultSet;
 import console_hospital_application.model.User;
 
 public class PatientDatabase {
-	public static void register(String registerUserName,String registerEmail,String registerPassword)throws Exception
+	public void register(User Patient)throws Exception
 	{
-		User user = new User(registerPassword, registerPassword, registerPassword);
+		//User user = new User(registerPassword, registerPassword, registerPassword);
 		try {
 			String url = "jdbc:mysql://localhost:3306/hospital_management";
 			String mysqlUser = "root";
@@ -20,9 +20,9 @@ public class PatientDatabase {
 	    	Connection connection = DriverManager.getConnection(url,mysqlUser,password);
 	    	//Statement statement = connection.createStatement();
 	    	PreparedStatement prepareStatement = connection.prepareStatement(sql);
-	    	prepareStatement.setString(1,user.getUserName());
-	    	prepareStatement.setString(2,user.getEmail());
-	    	prepareStatement.setString(3,user.getPassword());
+	    	prepareStatement.setString(1,Patient.getUserName());
+	    	prepareStatement.setString(2,Patient.getEmail());
+	    	prepareStatement.setString(3,Patient.getPassword());
 	    	prepareStatement.executeUpdate();
 	    	
 	    	//System.out.println(PreparedStatement);

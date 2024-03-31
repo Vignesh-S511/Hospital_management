@@ -17,6 +17,7 @@ public class AdminServiceImpl implements AdminService
 		    System.out.print("Enter registration password : ");
 			String adminRegisterPassword = scanner.nextLine();
 			//scanner.close();
+			AdminDatabase adminDatabase = new AdminDatabase();
 			Admin admin = new Admin(adminRegisterUserName,adminRegisterEmail,adminRegisterPassword);// Admin admin = new Admin() anonymous object
 			System.out.println(admin.getUserName() );
 			System.out.println(admin.getEmail());
@@ -24,7 +25,7 @@ public class AdminServiceImpl implements AdminService
 
 			try 
 			{
-				AdminDatabase.register(admin);
+				adminDatabase.register(admin);
 			} 
 			catch (Exception e) 
 			{
@@ -35,3 +36,5 @@ public class AdminServiceImpl implements AdminService
 	}
 																																																																	
 }
+//3 claa inside db imp
+

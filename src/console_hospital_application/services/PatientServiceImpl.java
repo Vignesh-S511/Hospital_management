@@ -3,6 +3,7 @@ package console_hospital_application.services;
 import java.util.Scanner;
 
 import console_hospital_application.database.AdminDatabase;
+import console_hospital_application.database.PatientDatabase;
 import console_hospital_application.model.Patient;
 
 public class PatientServiceImpl implements PatientService {
@@ -17,9 +18,10 @@ public class PatientServiceImpl implements PatientService {
 		String patientRegisterEmail = scanner.nextLine();
 		System.out.print("Enter registration password : ");
 		String patientRegisterPassword = scanner.nextLine();
+		PatientDatabase patientDatabase = new PatientDatabase();
 		Patient patient = new Patient(patientRegisterUserName,patientRegisterEmail,patientRegisterPassword);
 		try {
-			AdminDatabase.register(patientRegisterUserName,patientRegisterEmail,patientRegisterPassword);
+			patientDatabase.register(patient);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
