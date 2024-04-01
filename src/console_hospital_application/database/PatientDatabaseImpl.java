@@ -8,7 +8,7 @@ import java.sql.ResultSet;
 import console_hospital_application.model.User;
 
 public class PatientDatabaseImpl implements PatientDatabase{
-	public void patientRegister(User Patient)
+	public String patientRegister(User Patient)
 	{
 		//User user = new User(registerPassword, registerPassword, registerPassword);
 		try {
@@ -18,24 +18,23 @@ public class PatientDatabaseImpl implements PatientDatabase{
 			String sql = "INSERT INTO patient_details VALUES(?,?,?);";
 	    	
 	    	Connection connection = DriverManager.getConnection(url,mysqlUser,password);
-	    	//Statement statement = connection.createStatement();
 	    	PreparedStatement prepareStatement = connection.prepareStatement(sql);
 	    	prepareStatement.setString(1,Patient.getUserName());
 	    	prepareStatement.setString(2,Patient.getEmail());
 	    	prepareStatement.setString(3,Patient.getPassword());
 	    	prepareStatement.executeUpdate();
-	    	
-	    	//System.out.println(PreparedStatement);
-	    	
 	    	connection.close();
 	    	
 		}
 		catch(Exception e)
 		{
 			System.out.println(e.toString());
+			return "Registered unsuccessfully";
 		}
+		
+		return "Registered successfully";
 	}
-	public void patientLogin(String loginUserName,String loginPassword)
+	public String patientLogin(String loginUserName,String loginPassword)
 	{
 		String sql;
 		try {
@@ -51,20 +50,17 @@ public class PatientDatabaseImpl implements PatientDatabase{
 	    	ResultSet rows = prepareStatement.executeQuery();
 	    	if(rows.next())
 	    	{
-	    		System.out.println("Login successfully");
+	    		connection.close();
+	    		return "Login successfully";
 	    	}
-	    	else
-	    	{
-	    		System.out.println("Invalid username or password");
-	    	}
-	    		    	
-	    	connection.close();
-	    	
+	    		connection.close();	
+	    		    		
 		}
 		catch(Exception e)
 		{
 			System.out.println(e.toString());
 		}
+		return "Invalid username or password";
 		
 	}
 	

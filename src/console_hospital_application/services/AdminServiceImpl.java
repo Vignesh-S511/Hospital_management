@@ -11,7 +11,6 @@ public class AdminServiceImpl implements AdminService
 	@Override
 	public String adminRegister()
 	{
-			
 		    System.out.println("Admin Registration");
 			System.out.println("Enter admin userName : ");
 			String adminRegisterUserName = scanner.nextLine();
@@ -22,28 +21,31 @@ public class AdminServiceImpl implements AdminService
 			//scanner.close();
 			AdminDatabaseImpl adminDatabase = new AdminDatabaseImpl();
 			Admin admin = new Admin(adminRegisterUserName,adminRegisterEmail,adminRegisterPassword);
-			try 
-			{
-				adminDatabase.adminRegister(admin);
-			} 
-			catch (Exception e) 
-			{
-				e.printStackTrace();
-				return "unable to register";
-		     }
-				return "registered successfully";
+			return adminDatabase.adminRegister(admin);
 	}
+	
 	public String adminLogin()
 	{
-		String loginUserName = scanner.nextLine();
 	    System.out.println("Enter admin loginUserName");
 	    String adminLoginUserName = scanner.nextLine();
 	    System.out.println("Enter admin loginPassWord");
 	    String adminLoginPassword = scanner.nextLine();
 	    AdminDatabaseImpl adminDatabase = new AdminDatabaseImpl();
 	    adminDatabase.adminLogin(adminLoginUserName,adminLoginPassword);
-	    return "login successfully";
+	    //System.out.println("Enter the option : ");
+	    //int adminOption = scanner.nextInt();
+	    
+	    	System.out.println("which user you want to delete : ");
+	    	String deleteTable = scanner.nextLine();
+	    	System.out.println("which record you want to delete : ");
+	    	String deleteRecord = scanner.nextLine();
+	    	DoctorDatabaseImpl doctorDataBase = new DoctorDatabaseImpl();
+	    	return doctorDataBase.adminDelete(deleteTable,deleteRecord);
+	    	
+	    
+	    
 	}
 																																																																	
 }
 //3 claa inside db imp
+

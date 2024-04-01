@@ -4,6 +4,8 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 
 import console_hospital_application.model.Admin;
 import console_hospital_application.model.User;
@@ -11,9 +13,10 @@ import console_hospital_application.model.User;
 public class AdminDatabaseImpl implements AdminDatabase 
 {
 	@Override
-	public void adminRegister(User admin)
+	public String adminRegister(User admin)
 	{
-		try {
+		try 
+		{
 			String url = "jdbc:mysql://localhost:3306/hospital_management";
 			String mysqlUser = "root";
 			String password = "Vignesh@2001";
@@ -35,17 +38,20 @@ public class AdminDatabaseImpl implements AdminDatabase
 		catch(Exception e)
 		{
 			System.out.println(e.toString());
+			return "Registered unsuccessfully";
 		}
+		
+		return "Registered successfully";		
 	}
 	@Override
-	public void adminLogin(String loginUserName,String loginPassword)
+	public String adminLogin(String loginUserName,String loginPassword)
 	{
 		String sql;
 		try {
 			String url = "jdbc:mysql://localhost:3306/hospital_management";
 			String user = "root";
 			String password = "Vignesh@2001";
-			sql = "SELECT * FROM  doctor_details WHERE user_name = ? AND Pass_word = ?"; 
+			sql = "SELECT * FROM admin_details WHERE user_name = ? AND Pass_word = ?"; 
 	    	Connection connection = DriverManager.getConnection(url,user,password);
 	    	//Statement statement = connection.createStatement();
 	    	PreparedStatement prepareStatement = connection.prepareStatement(sql);
@@ -54,23 +60,43 @@ public class AdminDatabaseImpl implements AdminDatabase
 	    	ResultSet rows = prepareStatement.executeQuery();
 	    	if(rows.next())
 	    	{
-	    		System.out.println("Login successfully");
+	    		connection.close();
+	    		return "Login successfully";
 	    	}
-	    	else
-	    	{
-	    		System.out.println("Invalid username or password");
-	    	}
-	    		    	
-	    	connection.close();
-	    	
+	    		connection.close();	
+	    		    		
 		}
 		catch(Exception e)
 		{
 			System.out.println(e.toString());
 		}
+		return "Invalid username or password";
 		
 	}
-	
+	/*public String adminDelete(String deleteTable,String deleteRecord)
+	{
+		try {
+			String url = "jdbc:mysql://localhost:3306/hospital_management";
+			String mysqlUser = "root";
+			String password = "Vignesh@2001";
+			
+			 Connection conn = DriverManager.getConnection(url, mysqlUser, password);
+	         Statement statement = conn.createStatement();
+              String sql = "DELETE FROM deleteTable WHERE userName = "+deleteRecord;
+	          int rowsAffected = statement.executeUpdate(sql);
+
+	            if (rowsAffected > 0)
+	            {
+	                System.out.println("User deleted successfully.");
+	            } 
+	        } 
+			catch (SQLException e) 
+			{
+	            e.printStackTrace();
+	        }
+		 return "No user found with the specified ID.";
+         
+		}*/
 }
 
 		

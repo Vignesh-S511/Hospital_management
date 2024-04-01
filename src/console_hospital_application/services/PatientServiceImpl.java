@@ -23,14 +23,8 @@ public class PatientServiceImpl implements PatientService {
 		String patientRegisterPassword = scanner.nextLine();
 		PatientDatabaseImpl patientDatabase = new PatientDatabaseImpl();
 		Patient patient = new Patient(patientRegisterUserName,patientRegisterEmail,patientRegisterPassword);
-		try {
-			patientDatabase.patientRegister(patient);
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-			return "unable to register";
-		}
-		return "registered successfully";
+		return patientDatabase.patientRegister(patient);
+		
 	}
 	public String patientLogin()
 	{
@@ -39,9 +33,7 @@ public class PatientServiceImpl implements PatientService {
 	    System.out.println("Enter admin loginPassWord");
 	    String patientLoginPassword = scanner.nextLine();
 	    PatientDatabase patientDatabase = new PatientDatabaseImpl();
-	    patientDatabase.patientLogin(patientLoginUserName,patientLoginPassword);
-		
-	    return "login successfully";
+	    return patientDatabase.patientLogin(patientLoginUserName,patientLoginPassword);
 	}
 
 

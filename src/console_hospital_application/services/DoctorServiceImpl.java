@@ -21,17 +21,7 @@ public class DoctorServiceImpl implements DoctorService {
 		String doctorRegisterPassword = scanner.nextLine();
 		DoctorDatabaseImpl doctorDatabase = new DoctorDatabaseImpl();
 		Doctor doctor = new Doctor(doctorRegisterUserName,doctorRegisterEmail,doctorRegisterPassword);
-		try 
-		{
-			doctorDatabase.doctorRegister(doctor);
-		} 
-		catch (Exception e) 
-		{
-			e.printStackTrace();
-			return "unable to register";
-		}
-		return "registered successfully";
-		
+		return doctorDatabase.doctorRegister(doctor);
 	}
 	public String doctorLogin()
 	{
