@@ -5,9 +5,11 @@ import console_hospital_application.database.AdminDatabaseImpl;
 import console_hospital_application.database.DoctorDatabaseImpl;
 import console_hospital_application.model.Admin;
 import console_hospital_application.model.Doctor;
+import console_hospital_application.database.AdminDatabase;
 public class AdminServiceImpl implements AdminService
 {
 	Scanner scanner = new Scanner(System.in);
+	AdminDatabase adminDatabase = new AdminDatabaseImpl();
 	@Override
 	public String adminRegister()
 	{
@@ -19,7 +21,6 @@ public class AdminServiceImpl implements AdminService
 		    System.out.print("Enter registration password : ");
 			String adminRegisterPassword = scanner.nextLine();
 			//scanner.close();
-			AdminDatabaseImpl adminDatabase = new AdminDatabaseImpl();
 			Admin admin = new Admin(adminRegisterUserName,adminRegisterEmail,adminRegisterPassword);
 			return adminDatabase.adminRegister(admin);
 	}
@@ -39,8 +40,8 @@ public class AdminServiceImpl implements AdminService
 	    	String deleteTable = scanner.nextLine();
 	    	System.out.println("which record you want to delete : ");
 	    	String deleteRecord = scanner.nextLine();
-	    	DoctorDatabaseImpl doctorDataBase = new DoctorDatabaseImpl();
-	    	return doctorDataBase.adminDelete(deleteTable,deleteRecord);
+	    	return adminDatabase.adminDelete(deleteTable,deleteRecord);
+
 	    	
 	    
 	    

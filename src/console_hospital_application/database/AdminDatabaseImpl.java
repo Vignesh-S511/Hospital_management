@@ -73,19 +73,21 @@ public class AdminDatabaseImpl implements AdminDatabase
 		return "Invalid username or password";
 		
 	}
-	/*public String adminDelete(String deleteTable,String deleteRecord)
+    public String adminDelete(String deleteTable,String deleteRecord)
 	{
-		try {
+		try 
+		{
 			String url = "jdbc:mysql://localhost:3306/hospital_management";
 			String mysqlUser = "root";
 			String password = "Vignesh@2001";
-			
+			String sql = "DELETE FROM ? WHERE userName = ?";
 			 Connection conn = DriverManager.getConnection(url, mysqlUser, password);
-	         Statement statement = conn.createStatement();
-              String sql = "DELETE FROM deleteTable WHERE userName = "+deleteRecord;
-	          int rowsAffected = statement.executeUpdate(sql);
-
-	            if (rowsAffected > 0)
+	         PreparedStatement prepareStatement = conn.prepareStatement(sql);
+	         prepareStatement.setString(1,deleteTable);
+	         prepareStatement.setString(2,deleteRecord);
+	         ResultSet rowsAffected = prepareStatement.executeQuery();
+            
+	            if (rowsAffected.next())
 	            {
 	                System.out.println("User deleted successfully.");
 	            } 
@@ -96,7 +98,7 @@ public class AdminDatabaseImpl implements AdminDatabase
 	        }
 		 return "No user found with the specified ID.";
          
-		}*/
+	}
 }
 
 		
