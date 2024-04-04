@@ -52,6 +52,7 @@ public class Main {
 				if(loginUserType.equals("admin"))
 				{
 					System.out.println(adminService.adminLogin());
+					System.out.println(adminService.adminServiceDelete());
 				}
 				else if(loginUserType.equals("doctor"))
 				{

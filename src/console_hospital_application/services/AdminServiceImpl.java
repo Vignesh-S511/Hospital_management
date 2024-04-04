@@ -31,20 +31,16 @@ public class AdminServiceImpl implements AdminService
 	    String adminLoginUserName = scanner.nextLine();
 	    System.out.println("Enter admin loginPassWord");
 	    String adminLoginPassword = scanner.nextLine();
-	    AdminDatabaseImpl adminDatabase = new AdminDatabaseImpl();
-	    adminDatabase.adminLogin(adminLoginUserName,adminLoginPassword);
-	    //System.out.println("Enter the option : ");
-	    //int adminOption = scanner.nextInt();
-	    
-	    	System.out.println("which user you want to delete : ");
-	    	String deleteTable = scanner.nextLine();
-	    	System.out.println("which record you want to delete : ");
-	    	String deleteRecord = scanner.nextLine();
-	    	return adminDatabase.adminDelete(deleteTable,deleteRecord);
+	    return adminDatabase.adminLogin(adminLoginUserName,adminLoginPassword);
+	}
+	public String adminServiceDelete()
+	{
+        System.out.println("which user you want to delete : ");
+	    String deleteTable = scanner.nextLine();
+	    System.out.println("which record you want to delete : ");
+	    String deleteRecord = scanner.nextLine();
+	    return adminDatabase.adminDelete(deleteTable,deleteRecord);
 
-	    	
-	    
-	    
 	}
 																																																																	
 }

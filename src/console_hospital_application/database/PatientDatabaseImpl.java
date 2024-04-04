@@ -12,18 +12,15 @@ public class PatientDatabaseImpl implements PatientDatabase{
 	{
 		//User user = new User(registerPassword, registerPassword, registerPassword);
 		try {
-			String url = "jdbc:mysql://localhost:3306/hospital_management";
-			String mysqlUser = "root";
-			String password = "Vignesh@2001";
 			String sql = "INSERT INTO patient_details VALUES(?,?,?);";
 	    	
-	    	Connection connection = DriverManager.getConnection(url,mysqlUser,password);
-	    	PreparedStatement prepareStatement = connection.prepareStatement(sql);
+	    	Connection conn = GetConnection.getConnectionInstance();
+	    	PreparedStatement prepareStatement = conn.prepareStatement(sql);
 	    	prepareStatement.setString(1,Patient.getUserName());
 	    	prepareStatement.setString(2,Patient.getEmail());
 	    	prepareStatement.setString(3,Patient.getPassword());
 	    	prepareStatement.executeUpdate();
-	    	connection.close();
+	    	conn.close();
 	    	
 		}
 		catch(Exception e)
@@ -38,22 +35,19 @@ public class PatientDatabaseImpl implements PatientDatabase{
 	{
 		String sql;
 		try {
-			String url = "jdbc:mysql://localhost:3306/hospital_management";
-			String user = "root";
-			String password = "Vignesh@2001";
 			sql = "SELECT * FROM  doctor_details WHERE user_name = ? AND Pass_word = ?"; 
-	    	Connection connection = DriverManager.getConnection(url,user,password);
+	    	Connection conn = GetConnection.getConnectionInstance();
 	    	//Statement statement = connection.createStatement();
-	    	PreparedStatement prepareStatement = connection.prepareStatement(sql);
+	    	PreparedStatement prepareStatement = conn.prepareStatement(sql);
 	    	prepareStatement.setString(1,loginUserName);
 	    	prepareStatement.setString(2,loginPassword);
 	    	ResultSet rows = prepareStatement.executeQuery();
 	    	if(rows.next())
 	    	{
-	    		connection.close();
+	    		conn.close();
 	    		return "Login successfully";
 	    	}
-	    		connection.close();	
+	    		conn.close();	
 	    		    		
 		}
 		catch(Exception e)
