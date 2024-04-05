@@ -12,14 +12,14 @@ public class AppointmentDatabaseImpl implements AppointmentDatabase
 	public String bookAppointment(Appointment appointment) {
 		//User user = new User(registerPassword, registerPassword, registerPassword);
 		try {
-			String sql = "INSERT INTO appointment_details (patient_name,patient_disease,appointment_date,doctor_name) VALUES(?,?,?,?);";
+			String sql = "INSERT INTO appointment_details (patient_name,patient_disease,appointment_date,doctor_details) VALUES(?,?,?,?);";
 	    	
 	    	Connection conn = GetConnection.getConnectionInstance();
 	    	PreparedStatement prepareStatement = conn.prepareStatement(sql);
 	    	prepareStatement.setString(1,appointment. getPatientAppointmentName());
 	    	prepareStatement.setString(2,appointment.getPatientDisease());
 	    	prepareStatement.setString(3,appointment.getAppointmentDate());
-	    	prepareStatement.setString(3,appointment.getDoctorName());
+	    	prepareStatement.setString(4,appointment.getDoctorName());
 	    	prepareStatement.executeUpdate();
 	    	conn.close();
 		}
@@ -30,8 +30,6 @@ public class AppointmentDatabaseImpl implements AppointmentDatabase
 		}
 		
 		return "Stored successfully";
-
-		//return null;
 	}
 	
 }

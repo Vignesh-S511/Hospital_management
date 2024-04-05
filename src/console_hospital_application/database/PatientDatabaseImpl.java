@@ -46,6 +46,7 @@ public class PatientDatabaseImpl implements PatientDatabase
 	    	if(rows.next()){
 	    		conn.close();
 	    		return "Login successfully";
+	   
 	    	}
 	    		conn.close();	    		
 		}
