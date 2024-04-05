@@ -4,13 +4,14 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.Date;
 
 import console_hospital_application.model.User;
 
-public class PatientDatabaseImpl implements PatientDatabase{
+public class PatientDatabaseImpl implements PatientDatabase
+{
 	public String patientRegister(User Patient)
 	{
-		//User user = new User(registerPassword, registerPassword, registerPassword);
 		try {
 			String sql = "INSERT INTO patient_details VALUES(?,?,?);";
 	    	
@@ -34,10 +35,10 @@ public class PatientDatabaseImpl implements PatientDatabase{
 	public String patientLogin(String loginUserName,String loginPassword)
 	{
 		String sql;
-		try {
+		try 
+		{
 			sql = "SELECT * FROM  doctor_details WHERE user_name = ? AND Pass_word = ?"; 
 	    	Connection conn = GetConnection.getConnectionInstance();
-	    	//Statement statement = connection.createStatement();
 	    	PreparedStatement prepareStatement = conn.prepareStatement(sql);
 	    	prepareStatement.setString(1,loginUserName);
 	    	prepareStatement.setString(2,loginPassword);
@@ -54,9 +55,9 @@ public class PatientDatabaseImpl implements PatientDatabase{
 		{
 			System.out.println(e.toString());
 		}
-		return "Invalid username or password";
-		
+		return "Invalid username or password";	
 	}
+	
 	
 }
 

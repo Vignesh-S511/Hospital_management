@@ -6,5 +6,4 @@ public class Patient extends User {
 	{
 		super(userName, email, password);
 	}
-
 }

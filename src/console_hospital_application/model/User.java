@@ -5,13 +5,14 @@ public class User {
 	private String email;
 	private String password;
 	
+	
 	public User(String userName,String email,String password)
 	{
 		this.setUserName(userName);
 		this.setEmail(email);
 		this.setPassword(password);
+		
 	}
-	
 	public String getUserName() 
 	{
 		return userName;

@@ -1,14 +1,19 @@
 package console_hospital_application.services;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Scanner;
 import console_hospital_application.database.PatientDatabase;
 
 import console_hospital_application.database.AdminDatabaseImpl;
 import console_hospital_application.database.DoctorDatabaseImpl;
 import console_hospital_application.database.PatientDatabaseImpl;
+import console_hospital_application.model.Appointment;
 import console_hospital_application.model.Patient;
 
 public class PatientServiceImpl implements PatientService {
+	private static final String Appointment = null;
 	Scanner scanner = new Scanner(System.in);
 	@Override
 	public  String patientRegister() 
@@ -35,6 +40,7 @@ public class PatientServiceImpl implements PatientService {
 	    PatientDatabase patientDatabase = new PatientDatabaseImpl();
 	    return patientDatabase.patientLogin(patientLoginUserName,patientLoginPassword);
 	}
+	
 
 
 }
