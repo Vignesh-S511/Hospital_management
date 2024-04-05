@@ -11,7 +11,7 @@ import console_hospital_application.model.User;
 
 public class DoctorDatabaseImpl implements DoctorDatabase {
 	
-	public String doctorRegister(User Doctor)
+	public String doctorRegister(User doctor)
 	{
 		//User user = new User(registerPassword, registerPassword, registerPassword);
 		try {
@@ -19,9 +19,9 @@ public class DoctorDatabaseImpl implements DoctorDatabase {
 	    	
 	    	Connection conn = GetConnection.getConnectionInstance();
 	    	PreparedStatement prepareStatement = conn.prepareStatement(sql);
-	    	prepareStatement.setString(1,Doctor.getUserName());
-	    	prepareStatement.setString(2,Doctor.getEmail());
-	    	prepareStatement.setString(3,Doctor.getPassword());
+	    	prepareStatement.setString(1,doctor.getUserName());
+	    	prepareStatement.setString(2,doctor.getEmail());
+	    	prepareStatement.setString(3,doctor.getPassword());
 	    	prepareStatement.executeUpdate();
 	    	conn.close();
 		}

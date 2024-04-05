@@ -37,19 +37,17 @@ public class PatientDatabaseImpl implements PatientDatabase
 		String sql;
 		try 
 		{
-			sql = "SELECT * FROM  doctor_details WHERE user_name = ? AND Pass_word = ?"; 
+			sql = "SELECT * FROM  patient_details WHERE user_name = ? AND password = ?"; 
 	    	Connection conn = GetConnection.getConnectionInstance();
 	    	PreparedStatement prepareStatement = conn.prepareStatement(sql);
 	    	prepareStatement.setString(1,loginUserName);
 	    	prepareStatement.setString(2,loginPassword);
 	    	ResultSet rows = prepareStatement.executeQuery();
-	    	if(rows.next())
-	    	{
+	    	if(rows.next()){
 	    		conn.close();
 	    		return "Login successfully";
 	    	}
-	    		conn.close();	
-	    		    		
+	    		conn.close();	    		
 		}
 		catch(Exception e)
 		{

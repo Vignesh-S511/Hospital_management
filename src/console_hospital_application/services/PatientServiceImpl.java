@@ -35,7 +35,7 @@ public class PatientServiceImpl implements PatientService {
 	{
 	    System.out.println("Enter patient loginUserName");
 	    String patientLoginUserName = scanner.nextLine();
-	    System.out.println("Enter admin loginPassWord");
+	    System.out.println("Enter patient loginPassWord");
 	    String patientLoginPassword = scanner.nextLine();
 	    PatientDatabase patientDatabase = new PatientDatabaseImpl();
 	    return patientDatabase.patientLogin(patientLoginUserName,patientLoginPassword);

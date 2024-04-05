@@ -1,13 +1,15 @@
 package console_hospital_application.services;
 
 import java.text.SimpleDateFormat;
+import console_hospital_application.database.*;
 import java.util.Date;
 import java.util.Scanner;
 
 import console_hospital_application.model.Appointment;
 
-public class AppointmentServiceImp implements AppointmentService
+public class AppointmentServiceImpl implements AppointmentService
 {
+	AppointmentDatabase appointmentDatabase = new AppointmentDatabaseImpl();
 	public String patientAppointment() 
 	{
 		Scanner scanner = new Scanner(System.in);
@@ -22,7 +24,7 @@ public class AppointmentServiceImp implements AppointmentService
 		System.out.println("Enter the name of doctor : ");
 		String doctorName = scanner.nextLine();
 		 Appointment appointment = new Appointment(patientAppointmentName,patientDisease,appointmentDate,doctorName);
-		 return appointmentDatabase.patientAppointmentDetails(appointment);
+		 return appointmentDatabase.bookAppointment(appointment);
 	}
 
 }
