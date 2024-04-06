@@ -1,21 +1,19 @@
 package console_hospital_application.model;
 
-import java.sql.Date;
-
+import java.util.Date;
 public class Appointment {
 	private String patientAppointmentName;
 	private String patientDisease;
-	private String appointmentDate;
+	private Date appointmentDate;
 	private String doctorName;
 	
-	public Appointment(String patientAppointmentName,String patientDisease,String appointmentDate,String doctorName) 
+	public Appointment(String patientName, String disease, Date date, String doctorName) 
 	{
-		this.setPatientAppointmentName(patientAppointmentName);
-		this.setPatientDisease(patientDisease);
-		this.setAppointmentDate(appointmentDate);
-		this.setDoctorName(doctorName);
+		setPatientAppointmentName(patientName);
+		setPatientDisease(disease);
+		setAppointmentDate(date);
+		setDoctorName(doctorName);
 	}
-
 	public String getPatientAppointmentName()
 	{
 		return patientAppointmentName;
@@ -34,13 +32,13 @@ public class Appointment {
 		this.patientDisease = patientDisease;
 	}
 	
-	public String getAppointmentDate()
+	public Date getAppointmentDate()
 	{
 		return appointmentDate;
 	}
-	public void setAppointmentDate(String appointmentDate)
+	public void setAppointmentDate(Date date)
 	{
-		this.appointmentDate = appointmentDate;
+		this.appointmentDate = date;
 	}
 	
 	public String getDoctorName()

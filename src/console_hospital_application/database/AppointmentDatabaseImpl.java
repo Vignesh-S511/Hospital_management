@@ -10,7 +10,6 @@ public class AppointmentDatabaseImpl implements AppointmentDatabase
 
 	@Override
 	public String bookAppointment(Appointment appointment) {
-		//User user = new User(registerPassword, registerPassword, registerPassword);
 		try {
 			String sql = "INSERT INTO appointment_details (patient_name,patient_disease,appointment_date,doctor_details) VALUES(?,?,?,?);";
 	    	
@@ -18,11 +17,12 @@ public class AppointmentDatabaseImpl implements AppointmentDatabase
 	    	PreparedStatement prepareStatement = conn.prepareStatement(sql);
 	    	prepareStatement.setString(1,appointment. getPatientAppointmentName());
 	    	prepareStatement.setString(2,appointment.getPatientDisease());
-	    	prepareStatement.setString(3,appointment.getAppointmentDate());
+	    	java.sql.Date sqlDate = new java.sql.Date(appointment.getAppointmentDate().getTime());
+	    	prepareStatement.setDate(3,sqlDate);
 	    	prepareStatement.setString(4,appointment.getDoctorName());
 	    	prepareStatement.executeUpdate();
 	    	conn.close();
-		}
+		}	
 		catch(Exception e)
 		{
 			System.out.println(e.toString());
