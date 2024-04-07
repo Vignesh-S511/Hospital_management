@@ -4,5 +4,5 @@ import java.text.ParseException;
 
 public interface AppointmentService 
 {
-	public String patientAppointment();
+	public String bookPatientAppointment();
 }

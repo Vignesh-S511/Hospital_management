@@ -15,6 +15,7 @@ import console_hospital_application.model.Patient;
 public class PatientServiceImpl implements PatientService {
 	private static final String Appointment = null;
 	Scanner scanner = new Scanner(System.in);
+	 PatientDatabase patientDatabase = new PatientDatabaseImpl();
 	@Override
 	public  String patientRegister() 
 	{
@@ -26,7 +27,7 @@ public class PatientServiceImpl implements PatientService {
 		String patientRegisterEmail = scanner.nextLine();
 		System.out.print("Enter registration password : ");
 		String patientRegisterPassword = scanner.nextLine();
-		PatientDatabaseImpl patientDatabase = new PatientDatabaseImpl();
+		//PatientDatabaseImpl patientDatabase = new PatientDatabaseImpl();
 		Patient patient = new Patient(patientRegisterUserName,patientRegisterEmail,patientRegisterPassword);
 		return patientDatabase.patientRegister(patient);
 		
@@ -37,10 +38,8 @@ public class PatientServiceImpl implements PatientService {
 	    String patientLoginUserName = scanner.nextLine();
 	    System.out.println("Enter patient loginPassWord");
 	    String patientLoginPassword = scanner.nextLine();
-	    PatientDatabase patientDatabase = new PatientDatabaseImpl();
-	    patientDatabase.patientLogin(patientLoginUserName,patientLoginPassword);
-	    AppointmentService appointmentService = new AppointmentServiceImpl();
-	    return appointmentService.patientAppointment() ;
+	    return patientDatabase.patientLogin(patientLoginUserName,patientLoginPassword);
+	    
 	}
 	
 

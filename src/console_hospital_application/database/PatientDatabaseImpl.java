@@ -43,18 +43,15 @@ public class PatientDatabaseImpl implements PatientDatabase
 	    	prepareStatement.setString(1,loginUserName);
 	    	prepareStatement.setString(2,loginPassword);
 	    	ResultSet rows = prepareStatement.executeQuery();
-	    	if(rows.next()){
-	    		conn.close();
-	    		return "Login successfully";
-	   
-	    	}
-	    		conn.close();	    		
+            conn.close();	    		
 		}
 		catch(Exception e)
 		{
 			System.out.println(e.toString());
+			return "Invalid username or password";	
 		}
-		return "Invalid username or password";	
+		
+		return "Login successfully";
 	}
 	
 	

@@ -21,8 +21,7 @@ public class Appointment {
 	public void setPatientAppointmentName(String patientAppointmentName)
 	{
 		this.patientAppointmentName = patientAppointmentName;
-	}
-	
+	}	
 	public String getPatientDisease()
 	{
 		return patientDisease;
