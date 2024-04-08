@@ -36,11 +36,25 @@ public class AppointmentServiceImpl implements AppointmentService
 				e.printStackTrace();
 			}  
 	        appointmentDatabase.doctorDisplay();
-	        System.out.println("Enter the doctor's name: ");
-	        String doctorName = scanner.nextLine();
-	        appointmentDatabase.availableDoctor(doctorName);
-	        Appointment appointment = new Appointment(patientName, disease, date, doctorName);
-	        return appointmentDatabase.bookAppointment(appointment);
+	        boolean repeat = true;
+	        String str = "";
+	        while(repeat)
+	        {
+		        System.out.println("Enter the doctor's name: ");
+		        String doctorName = scanner.nextLine();
+		        if(appointmentDatabase.availableDoctor(doctorName))
+		        {
+		        	 Appointment appointment = new Appointment(patientName, disease, date, doctorName);
+		        	 repeat = false;
+		 	        return appointmentDatabase.bookAppointment(appointment);
+		        }
+		        else
+		        {
+		        	repeat = true;
+		        	System.out.println("This doctor will not available inside the hospital, Please enter available doctor");
+		        }
+	        }
+	        return str;
 	    }
 	}
 
