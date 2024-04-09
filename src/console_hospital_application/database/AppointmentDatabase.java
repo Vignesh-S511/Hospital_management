@@ -7,4 +7,5 @@ public interface AppointmentDatabase
 	public String bookAppointment(Appointment appointment );
 	public void doctorDisplay();
 	public boolean availableDoctor(String availableDoctor);
+	public String cancelAppointment(int cancelAppointment);
 }

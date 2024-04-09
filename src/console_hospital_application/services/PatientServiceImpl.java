@@ -11,11 +11,12 @@ import console_hospital_application.database.DoctorDatabaseImpl;
 import console_hospital_application.database.PatientDatabaseImpl;
 import console_hospital_application.model.Appointment;
 import console_hospital_application.model.Patient;
+import console_hospital_application.model.User;
 
 public class PatientServiceImpl implements PatientService {
-	private static final String Appointment = null;
 	Scanner scanner = new Scanner(System.in);
 	 PatientDatabase patientDatabase = new PatientDatabaseImpl();
+	 User userObject = new User();
 	@Override
 	public  String patientRegister() 
 	{
@@ -38,8 +39,7 @@ public class PatientServiceImpl implements PatientService {
 	    String patientLoginUserName = scanner.nextLine();
 	    System.out.println("Enter patient loginPassWord");
 	    String patientLoginPassword = scanner.nextLine();
-	    return patientDatabase.patientLogin(patientLoginUserName,patientLoginPassword);
-	    
+	    return userObject.userLogin(patientLoginUserName, patientLoginPassword,"patient");
 	}
 	
 

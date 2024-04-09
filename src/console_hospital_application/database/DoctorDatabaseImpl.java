@@ -34,34 +34,7 @@ public class DoctorDatabaseImpl implements DoctorDatabase {
 		return "Registered successfully";
 
 	}
-	public String doctorLogin(String loginUserName,String loginPassword)
-	{
-		String sql;
-		try {
-			
-			sql = "SELECT * FROM  doctor_details WHERE user_name = ? AND Pass_word = ?"; 
-	    	Connection conn = GetConnection.getConnectionInstance();
-	    	//Statement statement = connection.createStatement();
-	    	PreparedStatement prepareStatement = conn.prepareStatement(sql);
-	    	prepareStatement.setString(1,loginUserName);
-	    	prepareStatement.setString(2,loginPassword);
-	    	ResultSet rows = prepareStatement.executeQuery();
-	    	
-	    	if(rows.next())
-	    	{
-	    		conn.close();
-	    		return "Login successfully";
-	    	}
-	    		conn.close();	
-	    		    		
-		}
-		catch(Exception e)
-		{
-			System.out.println(e.toString());
-		}
-		return "Invalid username or password";
-		
-	}
+	
 	
 	
 }

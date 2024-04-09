@@ -56,5 +56,13 @@ public class AppointmentServiceImpl implements AppointmentService
 	        }
 	        return str;
 	    }
+	  public String patientCancelAppointment()
+	  {
+		  System.out.println("Enter which userId you need to cancel");
+		  int patientId = scanner.nextInt();
+		  scanner.nextLine();
+		  //String id = Integer.toString(patientId);
+		  return appointmentDatabase. cancelAppointment(patientId); 
+	  }
 	}
 
