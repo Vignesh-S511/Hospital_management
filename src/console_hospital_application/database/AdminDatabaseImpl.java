@@ -6,11 +6,14 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 
 import console_hospital_application.model.Admin;
 import console_hospital_application.model.User;
 
 public class AdminDatabaseImpl implements AdminDatabase {
+	List <String> doctorList = new ArrayList<>();
 	@Override
 	public String adminRegister(User admin) {
 		try {
@@ -30,30 +33,6 @@ public class AdminDatabaseImpl implements AdminDatabase {
 
 		return "Registered successfully";
 	}
-
-	@Override
-	public String adminLogin(String loginUserName, String loginPassword) {
-		String sql;
-		try {
-			sql = "SELECT * FROM admin_details WHERE userName = ? AND Password = ?";
-			Connection conn = GetConnection.getConnectionInstance();
-			PreparedStatement prepareStatement = conn.prepareStatement(sql);
-			prepareStatement.setString(1, loginUserName);
-			prepareStatement.setString(2, loginPassword);
-			ResultSet rows = prepareStatement.executeQuery();
-			if (rows.next()) {
-				conn.close();
-				return "Login successfully";
-			}
-			conn.close();
-
-		} catch (Exception e) {
-			System.out.println(e.toString());
-		}
-		return "Invalid username or password";
-
-	}
-
 	public String adminDelete(String deleteTable, String deleteRecord) {
 		String sql = " ";
 		try {
@@ -79,4 +58,5 @@ public class AdminDatabaseImpl implements AdminDatabase {
 		return "No user found with the specified ID.";
 
 	}
+	
 }

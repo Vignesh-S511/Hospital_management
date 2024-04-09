@@ -5,11 +5,14 @@ import console_hospital_application.database.AdminDatabaseImpl;
 import console_hospital_application.database.DoctorDatabaseImpl;
 import console_hospital_application.model.Admin;
 import console_hospital_application.model.Doctor;
+import console_hospital_application.model.User;
 import console_hospital_application.database.AdminDatabase;
 public class AdminServiceImpl implements AdminService
 {
 	Scanner scanner = new Scanner(System.in);
 	AdminDatabase adminDatabase = new AdminDatabaseImpl();
+	User userObject = new User();
+	
 	@Override
 	public String adminRegister()
 	{
@@ -31,7 +34,7 @@ public class AdminServiceImpl implements AdminService
 	    String adminLoginUserName = scanner.nextLine();
 	    System.out.println("Enter admin loginPassWord");
 	    String adminLoginPassword = scanner.nextLine();
-	    return adminDatabase.adminLogin(adminLoginUserName,adminLoginPassword);
+	    return userObject.userLogin(adminLoginUserName, adminLoginPassword,"admin");
 	}
 	public String adminServiceDelete()
 	{
@@ -44,5 +47,4 @@ public class AdminServiceImpl implements AdminService
 	}
 																																																																	
 }
-//3 claa inside db imp
 

@@ -9,8 +9,11 @@ import console_hospital_application.database.AdminDatabaseImpl;
 import console_hospital_application.model.Doctor;
 import console_hospital_application.model.Patient;
 import console_hospital_application.services.AdminServiceImpl;
+import console_hospital_application.services.AppointmentService;
+import console_hospital_application.services.AppointmentServiceImpl;
 import console_hospital_application.services.DoctorServiceImpl;
 import console_hospital_application.services.PatientServiceImpl;
+import controller.PatientController;
 
 public class Main {
 	public static void main(String[] args) throws Exception
@@ -19,6 +22,8 @@ public class Main {
 		AdminService adminService = new AdminServiceImpl();
 		DoctorService doctorService = new DoctorServiceImpl();
 		PatientService patientService = new PatientServiceImpl();
+		
+		PatientController patientController = new PatientController();
 		while(true)
 		{
 			System.out.println("Enter the option");
@@ -60,7 +65,8 @@ public class Main {
 				}
 				else 
 				{
-					System.out.println(patientService.patientLogin());
+						System.out.println(patientService.patientLogin());
+						patientController.patientController();
 				}
 				break;
 			

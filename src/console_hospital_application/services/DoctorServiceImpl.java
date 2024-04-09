@@ -5,9 +5,11 @@ import java.util.Scanner;
 import console_hospital_application.database.AdminDatabaseImpl;
 import console_hospital_application.database.DoctorDatabaseImpl;
 import console_hospital_application.model.Doctor;
+import console_hospital_application.model.User;
 
 public class DoctorServiceImpl implements DoctorService {
 	Scanner scanner = new Scanner(System.in);
+	User userObject = new User();
 	@Override
 	public String doctorRegister()
 	{
@@ -27,10 +29,9 @@ public class DoctorServiceImpl implements DoctorService {
 	{
 	    System.out.println("Enter doctor loginUserName");
 	    String doctorLoginUserName = scanner.nextLine();
-	    System.out.println("Enter admin loginPassWord");
+	    System.out.println("Enter doctor loginPassWord");
 	    String doctorLoginPassword = scanner.nextLine();
-	    DoctorDatabaseImpl doctorDatabase = new DoctorDatabaseImpl();
-	    return doctorDatabase.doctorLogin(doctorLoginUserName,doctorLoginPassword);
+	    return userObject.userLogin(doctorLoginUserName, doctorLoginPassword,"doctor");
 	}
 
 }
