@@ -14,6 +14,7 @@ import console_hospital_application.services.AppointmentServiceImpl;
 import console_hospital_application.services.DoctorServiceImpl;
 import console_hospital_application.services.PatientServiceImpl;
 import controller.PatientController;
+import controller.AdminController;
 
 public class Main {
 	public static void main(String[] args) throws Exception
@@ -24,6 +25,7 @@ public class Main {
 		PatientService patientService = new PatientServiceImpl();
 		
 		PatientController patientController = new PatientController();
+		AdminController adminController = new AdminController();
 		while(true)
 		{
 			System.out.println("Enter the option");
@@ -57,7 +59,7 @@ public class Main {
 				if(loginUserType.equals("admin"))
 				{
 					System.out.println(adminService.adminLogin());
-					System.out.println(adminService.adminServiceDelete());
+					adminController.adminController();
 				}
 				else if(loginUserType.equals("doctor"))
 				{

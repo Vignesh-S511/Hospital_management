@@ -43,7 +43,6 @@ public class AdminServiceImpl implements AdminService
 	    System.out.println("which record you want to delete : ");
 	    String deleteRecord = scanner.nextLine();
 	    return adminDatabase.adminDelete(deleteTable,deleteRecord);
-
 	}
 																																																																	
 }
