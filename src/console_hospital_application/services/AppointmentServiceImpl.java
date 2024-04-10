@@ -8,6 +8,8 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.InputMismatchException;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 import console_hospital_application.model.Appointment;
 
@@ -24,17 +26,28 @@ public class AppointmentServiceImpl implements AppointmentService
 
 	        System.out.println("Enter the disease: ");
 	        String disease = scanner.nextLine();
-	        
-	        System.out.println("Enter the appoinementDate: ");
-	        String appointmentDate = scanner.nextLine();
-	        try 
-	        {
-				date=new SimpleDateFormat("dd/MM/yyyy").parse(appointmentDate); 
-			} 
-	        catch (ParseException e) 
-	        {
-				e.printStackTrace();
-			}  
+	          System.out.println("Enter the appoinementDate: ");
+		        String appointmentDate = scanner.nextLine();
+		        try 
+		        {
+//		        	DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+//		        	LocalDate inputDate = LocalDate.parse(appointmentDate,formatter);
+//		        	LocalDate currentDate = LocalDate.now();
+//		        	if(!(inputDate.isAfter(currentDate)))
+//		        	{
+//		        		System.out.println("Enter the valid date ");
+//		        		appDate = true;
+//		        	}
+//		        	else
+//		        	{
+//		        		appDate = false;
+//		        	}
+		        	date = new SimpleDateFormat("dd/MM/yyyy").parse(appointmentDate);
+				} 
+		        catch (Exception e) 
+		        {
+					e.printStackTrace();
+				}  
 	        appointmentDatabase.doctorDisplay();
 	        boolean repeat = true;
 	        String str = "";

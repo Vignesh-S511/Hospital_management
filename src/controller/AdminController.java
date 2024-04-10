@@ -12,19 +12,22 @@ public class AdminController {
 	AdminDatabase  adminDatabase = new AdminDatabaseImpl();
 	public void adminController()
 	{
-		Scanner scanner = new Scanner(System.in);
-		System.out.println("Enter 1 for adminDelete 2 for display all the patient and Doctor");
-		int adminOption;
-		adminOption = scanner.nextInt();
-		switch(adminOption)
+		while(true)
 		{
-		case 1:
-			System.out.println(adminService.adminServiceDelete());
-			break;
-		case 2:
-			adminDatabase.adminDoctorDisplay();
-			adminDatabase.adminPatientDisplay();
-			break;
+			Scanner scanner = new Scanner(System.in);
+			System.out.println("Enter 1 for adminDelete 2 for display all the patient and Doctor");
+			int adminOption;
+			adminOption = scanner.nextInt();
+			switch(adminOption)
+			{
+			case 1:
+				System.out.println(adminService.adminServiceDelete());
+				break;
+			case 2:
+				adminDatabase.adminDoctorDisplay();
+				adminDatabase.adminPatientDisplay();
+				break;
+			}
 		}
 	}
 
