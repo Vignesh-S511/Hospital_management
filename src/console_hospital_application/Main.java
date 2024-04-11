@@ -13,8 +13,8 @@ import console_hospital_application.services.AppointmentService;
 import console_hospital_application.services.AppointmentServiceImpl;
 import console_hospital_application.services.DoctorServiceImpl;
 import console_hospital_application.services.PatientServiceImpl;
-import controller.PatientController;
-import controller.AdminController;
+import console_hospital_application.controller.PatientController;
+import console_hospital_application.controller.AdminController;
 
 public class Main {
 	public static void main(String[] args) throws Exception

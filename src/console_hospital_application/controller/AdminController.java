@@ -1,4 +1,4 @@
-package controller;
+package console_hospital_application.controller;
 
 import java.util.Scanner;
 
@@ -32,3 +32,6 @@ public class AdminController {
 	}
 
 }
+
+
+
