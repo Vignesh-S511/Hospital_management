@@ -14,10 +14,11 @@ import console_hospital_application.model.User;
 
 public class AdminDatabaseImpl implements AdminDatabase {
 	List <String> doctorList = new ArrayList<>();
+	List <String> patientList = new ArrayList<>();
 	@Override
 	public String adminRegister(User admin) {
 		try {
-			String sql = "INSERT INTO admin_details (userName,email,password) VALUES(?,?,?);";
+			String sql = "INSERT INTO admin_details (user_name,email,password) VALUES(?,?,?);";
 			Connection conn = GetConnection.getConnectionInstance();
 			PreparedStatement prepareStatement = conn.prepareStatement(sql);
 			prepareStatement.setString(1, admin.getUserName());
@@ -56,7 +57,46 @@ public class AdminDatabaseImpl implements AdminDatabase {
 			e.printStackTrace();
 		}
 		return "No user found with the specified ID.";
+	}
 
+	public void adminDoctorDisplay() {
+		String doctorName="";
+		try 
+		{
+			String sql ="SELECT * FROM doctor_details";
+			Connection conn = GetConnection.getConnectionInstance();
+			PreparedStatement preparedStatement = conn.prepareStatement(sql);
+			ResultSet resultSet = preparedStatement.executeQuery();
+			System.out.println("These doctors are available inside the hospital:");
+			while (resultSet.next()) {
+		           doctorName = resultSet.getString("User_name");
+		           doctorList.add(doctorName);
+		           System.out.println(doctorName);
+		        }
+		}
+		catch (SQLException e) {
+			System.out.println(e.toString());
+		}
+	}
+	public void adminPatientDisplay() {
+		String patientName="";
+		try 
+		{
+			String sql ="SELECT * FROM patient_details";
+			Connection conn = GetConnection.getConnectionInstance();
+			PreparedStatement preparedStatement = conn.prepareStatement(sql);
+			ResultSet resultSet = preparedStatement.executeQuery();
+			System.out.println("These patient are booking appointment:");
+	        while (resultSet.next()) 
+	        {
+	        	patientName = resultSet.getString("User_name");
+		           patientList.add(patientName);
+		           System.out.println(patientName);
+	        }
+		}
+		catch (SQLException e) {
+			System.out.println(e.toString());
+		}
 	}
 	
 }

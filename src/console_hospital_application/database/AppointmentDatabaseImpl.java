@@ -20,10 +20,10 @@ public class AppointmentDatabaseImpl implements AppointmentDatabase
 			String sql = "INSERT INTO appointment_details (patient_name,patient_disease,appointment_date,doctor_details) VALUES(?,?,?,?);";
 	    	
 	    	Connection conn = GetConnection.getConnectionInstance();
-	    	PreparedStatement prepareStatement = conn.prepareStatement(sql,PreparedStatement.RETURN_GENERATED_KEYS );
+	    	PreparedStatement prepareStatement = conn.prepareStatement(sql,PreparedStatement.RETURN_GENERATED_KEYS ); /// to fetch id from database
 	    	prepareStatement.setString(1,appointment. getPatientAppointmentName());
 	    	prepareStatement.setString(2,appointment.getPatientDisease());
-	        java.sql.Date sqlDate = new java.sql.Date(appointment.getAppointmentDate().getTime());
+	       java.sql.Date sqlDate = new java.sql.Date(appointment.getAppointmentDate().getTime());
 	    	prepareStatement.setDate(3,sqlDate);
 	    	prepareStatement.setString(4,appointment.getDoctorName());
 	    	int row = prepareStatement.executeUpdate();
