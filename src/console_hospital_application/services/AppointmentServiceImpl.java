@@ -17,7 +17,7 @@ import console_hospital_application.model.Appointment;
 public class AppointmentServiceImpl implements AppointmentService {
 	AppointmentDatabase appointmentDatabase = new AppointmentDatabaseImpl();
 	Scanner scanner = new Scanner(System.in);
-	SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
+	SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
 	Date date = null;
 	public String bookPatientAppointment() {
 		
@@ -30,7 +30,7 @@ public class AppointmentServiceImpl implements AppointmentService {
 			System.out.println("Enter the appoinementDate: ");
 			String appointmentDate = scanner.nextLine();
 			try {
-				Date date = dateFormat.parse(appointmentDate);
+				date = dateFormat.parse(appointmentDate);
 				if (date.after(new Date()) || date.equals(new Date())) {
 					break;
 				}
@@ -38,6 +38,7 @@ public class AppointmentServiceImpl implements AppointmentService {
 
 			} catch (ParseException e) {
 				e.printStackTrace();
+				System.out.println("Enter the valid date");
 			}
 		}
 		System.out.println(date);

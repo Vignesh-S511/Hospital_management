@@ -73,6 +73,7 @@ public class AdminDatabaseImpl implements AdminDatabase {
 		           doctorList.add(doctorName);
 		           System.out.println(doctorName);
 		        }
+			conn.close();
 		}
 		catch (SQLException e) {
 			System.out.println(e.toString());
@@ -93,6 +94,7 @@ public class AdminDatabaseImpl implements AdminDatabase {
 		           patientList.add(patientName);
 		           System.out.println(patientName);
 	        }
+	        conn.close();
 		}
 		catch (SQLException e) {
 			System.out.println(e.toString());

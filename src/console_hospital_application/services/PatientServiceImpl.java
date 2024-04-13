@@ -48,13 +48,7 @@ public class PatientServiceImpl implements PatientService {
 	    return userObject.userLogin(patientLoginUserName, patientLoginPassword,"patient");
 	    
 	}
-	public String displayRemainder()
-	{
-		
-		
-		
-		return null;
-	}
+	
 	
 
 

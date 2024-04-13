@@ -1,5 +1,6 @@
 package console_hospital_application;
 
+import java.text.DateFormat;
 import java.util.*;
 import console_hospital_application.services.AdminService;
 import console_hospital_application.services.DoctorService;
@@ -68,7 +69,6 @@ public class Main {
 				else 
 				{
 					    System.out.println(patientService.patientLogin());
-						patientService.displayRemainder();
 						patientController.patientController();
 				}
 				break;
