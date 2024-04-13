@@ -17,10 +17,10 @@ import console_hospital_application.model.Appointment;
 public class AppointmentServiceImpl implements AppointmentService {
 	AppointmentDatabase appointmentDatabase = new AppointmentDatabaseImpl();
 	Scanner scanner = new Scanner(System.in);
-	SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-
+	SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
+	Date date = null;
 	public String bookPatientAppointment() {
-		Date date = null;
+		
 		System.out.println("Enter patient name: ");
 		String patientName = scanner.nextLine();
 		System.out.println("Enter the disease: ");
@@ -30,7 +30,7 @@ public class AppointmentServiceImpl implements AppointmentService {
 			System.out.println("Enter the appoinementDate: ");
 			String appointmentDate = scanner.nextLine();
 			try {
-				date = new SimpleDateFormat("dd/MM/yyyy").parse(appointmentDate);
+				Date date = dateFormat.parse(appointmentDate);
 				if (date.after(new Date()) || date.equals(new Date())) {
 					break;
 				}
@@ -40,6 +40,7 @@ public class AppointmentServiceImpl implements AppointmentService {
 				e.printStackTrace();
 			}
 		}
+		System.out.println(date);
 		appointmentDatabase.doctorDisplay();
 		boolean repeat = true;
 		String str = "";

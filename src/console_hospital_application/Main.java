@@ -67,7 +67,8 @@ public class Main {
 				}
 				else 
 				{
-						System.out.println(patientService.patientLogin());
+					    System.out.println(patientService.patientLogin());
+						patientService.displayRemainder();
 						patientController.patientController();
 				}
 				break;
