@@ -9,6 +9,8 @@ import console_hospital_application.database.PatientDatabase;
 import console_hospital_application.database.AdminDatabaseImpl;
 import console_hospital_application.database.DoctorDatabaseImpl;
 import console_hospital_application.database.PatientDatabaseImpl;
+import console_hospital_application.database.AppointmentDatabaseImpl;
+import console_hospital_application.database.AppointmentDatabase;
 import console_hospital_application.model.Appointment;
 import console_hospital_application.model.Patient;
 import console_hospital_application.model.User;
@@ -17,6 +19,9 @@ public class PatientServiceImpl implements PatientService {
 	Scanner scanner = new Scanner(System.in);
 	 PatientDatabase patientDatabase = new PatientDatabaseImpl();
 	 User userObject = new User();
+	 //Appointment appointment = new Appointment(patientName, disease, date, doctorName);
+	AppointmentDatabase appointmentDatabase = new AppointmentDatabaseImpl();
+
 	@Override
 	public  String patientRegister() 
 	{
@@ -39,8 +44,11 @@ public class PatientServiceImpl implements PatientService {
 	    String patientLoginUserName = scanner.nextLine();
 	    System.out.println("Enter patient loginPassWord");
 	    String patientLoginPassword = scanner.nextLine();
+	    System.out.println(appointmentDatabase.fetchAppointmentDate(patientLoginUserName));
 	    return userObject.userLogin(patientLoginUserName, patientLoginPassword,"patient");
+	    
 	}
+	
 	
 
 

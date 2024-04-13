@@ -5,13 +5,20 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 
 import console_hospital_application.model.Appointment;
+import console_hospital_application.services.AppointmentService;
+import console_hospital_application.services.AppointmentServiceImpl;
 
 public class AppointmentDatabaseImpl implements AppointmentDatabase 
 {
 	List <String> doctorList = new ArrayList<>();
+	List <String> patientList = new ArrayList<>();
+
 
 	@Override
 	public String bookAppointment(Appointment appointment) {
@@ -61,6 +68,7 @@ public class AppointmentDatabaseImpl implements AppointmentDatabase
 	           doctorList.add(doctorName);
 	           System.out.println(doctorName);
 	        }
+	        conn.close();
 		}
 		catch(Exception e)
 		{
@@ -75,7 +83,6 @@ public class AppointmentDatabaseImpl implements AppointmentDatabase
 	{
 		try
 		{
-			//int patientId = Integer.parseInt(id);
 			String sql = "DELETE FROM appointment_details WHERE id = ?";
 			Connection conn = GetConnection.getConnectionInstance();
 			PreparedStatement preparedStatement = conn.prepareStatement(sql);
@@ -89,6 +96,51 @@ public class AppointmentDatabaseImpl implements AppointmentDatabase
 			return "cancelled unSuccessfully";
 		}
 		return "Canceled Successfully";
+	}
+	public String fetchAppointmentDate(String patientLoginUserName)
+	{
+		String patientName = " ";
+		try {
+			String sql = "SELECT appointment_date FROM appointment_details WHERE patient_name = ?";
+			Connection conn = GetConnection.getConnectionInstance();
+			PreparedStatement preparedStatement = conn.prepareStatement(sql);
+			preparedStatement.setString(1,patientLoginUserName);
+			ResultSet resultSet = preparedStatement.executeQuery();
+			
+			
+			
+			Date currentDate = new Date(); //13-04-2024   8.56
+			long millisecondInDay = 24*60*60*1000; // 24hr in millisecond
+			SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy/MM/dd");
+			Date tomorrowDate = null;
+			try 
+			{
+				tomorrowDate = simpleDateFormat.parse(simpleDateFormat.format(new Date(currentDate.getTime()+millisecondInDay))); // 2024/04/14 00:00:00
+				                                                                       //           1970 12.oclock gmt jan1 - 2024 8.56 ist april 13 diff millisec                          
+			} catch (ParseException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+			
+			while(resultSet.next())
+			{
+				java.sql.Date appointmentDate = resultSet.getDate("appointment_date");
+				java.util.Date utilAppointmentDate = new java.util.Date(appointmentDate.getTime());
+			    if(utilAppointmentDate.equals(tomorrowDate))
+				{
+					return "you have an appointment tomorrow";
+				}
+			}
+			conn.close();
+
+		}
+		catch(SQLException e){
+			System.out.println(e.toString());
+			
+		}
+		return " ";
+		//return "null";
 	}
 
 }
