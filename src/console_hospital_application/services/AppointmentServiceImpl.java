@@ -19,6 +19,9 @@ public class AppointmentServiceImpl implements AppointmentService {
 	Scanner scanner = new Scanner(System.in);
 	SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
 	Date date = null;
+	PatientDatabase patientDatabase = new PatientDatabaseImpl();
+	PatientServiceImpl patientService = new PatientServiceImpl();
+			
 	public String bookPatientAppointment() {
 		
 		System.out.println("Enter patient name: ");
@@ -76,6 +79,11 @@ public class AppointmentServiceImpl implements AppointmentService {
 		System.out.println("Enter which userId you need to cancel");
 		int patientId = scanner.nextInt();
 		scanner.nextLine();
-		return appointmentDatabase.cancelAppointment(patientId);
+		 return appointmentDatabase.cancelAppointment(patientId);
 	}
+	public void viewPatientAppointment()
+	{	
+		appointmentDatabase.viewMyAppointment(PatientServiceImpl.patientLoginUserName);
+	}
+	
 }

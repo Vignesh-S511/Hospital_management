@@ -140,7 +140,30 @@ public class AppointmentDatabaseImpl implements AppointmentDatabase
 			
 		}
 		return " ";
-		//return "null";
 	}
-
+	public void viewMyAppointment(String patientLoginUserName)
+	{
+		try {
+			String sql = "SELECT appointment_date,doctor_details FROM appointment_details WHERE patient_name = ? ";
+			Connection conn = GetConnection.getConnectionInstance();
+			PreparedStatement preparedStatement = conn.prepareStatement(sql);
+			preparedStatement.setString(1,patientLoginUserName);
+			ResultSet resultSet = preparedStatement.executeQuery();
+			while(resultSet.next())
+			{
+				java.sql.Date appointmentDate = resultSet.getDate("appointment_date");
+				String doctorDetails = resultSet.getString("doctor_details");
+				java.util.Date utilAppointmentDate = new java.util.Date(appointmentDate.getTime());
+				System.out.println(utilAppointmentDate);
+				System.out.println(doctorDetails);
+				
+			}
+			conn.close();
+		}
+		catch(SQLException e)
+		{
+			System.out.println(e.toString());
+		}
+	}
+	
 }

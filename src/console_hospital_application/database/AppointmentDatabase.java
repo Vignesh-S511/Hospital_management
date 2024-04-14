@@ -9,4 +9,5 @@ public interface AppointmentDatabase
 	public boolean availableDoctor(String availableDoctor);
 	public String cancelAppointment(int cancelAppointment);
 	public String fetchAppointmentDate(String patientLoginUserName);
+	public void viewMyAppointment(String patientLoginUserName);
 }

@@ -20,6 +20,7 @@ import console_hospital_application.controller.AdminController;
 public class Main {
 	public static void main(String[] args) throws Exception
 	{
+		
 		Scanner scanner = new Scanner(System.in);
 		AdminService adminService = new AdminServiceImpl();
 		DoctorService doctorService = new DoctorServiceImpl();

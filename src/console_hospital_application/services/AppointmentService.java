@@ -6,4 +6,5 @@ public interface AppointmentService
 {
 	public String bookPatientAppointment();
 	public String patientCancelAppointment();
+	public void viewPatientAppointment();
 }
